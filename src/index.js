@@ -18,4 +18,14 @@ app.post('/user', (req,res) => {
     res.json(list);
 });
 
+app.delete('/user/:id', (req,res) => {
+    if(list.length > 0){
+        index = list.indexOf(req.params.id);
+        list.splice(index,1);
+        res.status(202).json( list );
+    } else {
+        res.status(204).json( list );
+    }  
+})
+
 app.listen(port, () => console.log(`Server on port ${port}!`))
